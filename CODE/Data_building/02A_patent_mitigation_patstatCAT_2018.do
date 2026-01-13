@@ -1,14 +1,14 @@
 
-*=== Nature Energy: July 2021
-*=== Paper title: 
-*				Global Trends in the Invention and Diffusion 
-*				of Climate Change Mitigation Technologies
+*=== NACI Report: 2026
+*=== Chapter title: 
+*				Sustainability and climate Change 
+*				Climate Change Mitigation Technologies
 
 						*== MAIN PATENT DATABASE
 						
 *=== Objective: 
 * - Add information to selected patents (Mitigation and benchmark)
-* - Build the finale databases for invetion (number of technology invented per year per country per technology field)
+* - Build the finale databases for invention (number of technology invented per year per country per technology field)
 * AND transfers (number of technology transferred between countries (inventor & importer countries) per year per technology technology fields)
 
 * BENCHMARK IDENTIFIED USING THE 3 FIRST DIGITS OF THE IPC CODES
@@ -21,7 +21,7 @@ clear all
 
 cd "$datapath"
 
-use "$datapath/Patstat_mitigation2018.dta", clear
+use "$datapath/Patstat_mitigation2026.dta", clear
 keep technology appln_id 
 duplicates drop
 
@@ -99,7 +99,7 @@ egen GR = sum(granted), by(docdb techno)
 gen granted_docdb = (GR>0)
 *Define the publication year of the invention as the earliest publication year within the family
 bys docdb : egen publn_year=min(earliest_publn_year)
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<2026
 keep technology docdb publn_year invt_country HVI granted_docdb
 duplicates drop
 gen byte x = 1
@@ -134,7 +134,7 @@ egen GR = sum(granted), by(docdb techno)
 gen granted_docdb = (GR>0)
 *Define the publication year of the invention as the earliest publication year within the family
 bys docdb : egen publn_year=min(earliest_publn_year)
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<2026
 keep technology docdb publn_year invt_country HVI granted_docdb
 duplicates drop
 gen byte x = 1
@@ -179,7 +179,7 @@ sort docdb_family_id technology invt_country appln_auth earliest_publn_year gran
 bys docdb_family_id : egen publn_year = min(earliest_publn_year)
 drop earliest_publn_year appln_id
 duplicates drop
-keep if publn_year >1969 & publn_year < 2018
+keep if publn_year >1969 & publn_year < 2026
 drop if appln_auth=="EP"
 drop if appln_auth=="WO"
 drop _m
@@ -346,7 +346,7 @@ ren iso3 invt_iso
 ren name invt_name
 
 * ==== Add Country Income group (World Bank) ===  
-mmerge invt_iso using "$otherpath/income_region_World_Bank_2019", unmatched(master) ukeep(income)
+mmerge invt_iso using "$otherpath/income_region_World_Bank_2025", unmatched(master) ukeep(income)
 
 drop if income ==""
 drop if invt_name =="Czechia" 
@@ -356,7 +356,7 @@ save "$datapath/Final_database/mitigation_inv_tech_inventor_ctry_year", replace
 
 * Transfers
 use "$patstpath/mitigation/mitigation_patents_invt_auth_publn_year", clear	
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<2026
 mmerge technology appln_auth publn_year invt_country using "$patstpath/mitigation/Complete_ALL_patents_invt_auth_year.dta"
 drop _m
 ren invt_country iso2
@@ -445,13 +445,13 @@ drop _merge
 
 * ==== Add Country income group ===  
 * == Income group for inventor country: creation of income_invt ==
-mmerge invt_iso using "$otherpath/income_region_World_Bank_2019", unmatched(master) ukeep(income region)
+mmerge invt_iso using "$otherpath/income_region_World_Bank_2025", unmatched(master) ukeep(income region)
 rename income income_invt
 rename region region_invt
 drop _merge
 
 * == Income group for recipient country: creation of income_office ==
-mmerge patent_office_iso using "$otherpath/income_region_World_Bank_2019", unmatched(master) ukeep(income region)
+mmerge patent_office_iso using "$otherpath/income_region_World_Bank_2025", unmatched(master) ukeep(income region)
 rename income income_office
 rename region region_office
 drop _merge
