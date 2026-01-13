@@ -1,7 +1,7 @@
-*=== Nature Energy: July 2021
-*=== Paper title: 
-*				Global Trends in the Invention and Diffusion 
-*				of Climate Change Mitigation Technologies
+*=== NACI Report: 2026
+*=== Chapter title: 
+*				Sustainability and climate Change 
+*				Climate Change Mitigation Technologies
 *=== Objective: 
 * - Select patents constituting the benchmark related to each CCMT technology fields
 
@@ -13,7 +13,7 @@
 *======== 
 
 *== Selection of the technology codes to create the benchmark for each technoloy fields
-* Pourcentage of coverage used: 75% 
+* Prcentage of coverage used: 75% 
 *(we select the ipc code which are the most represented in the given technology 
 * class until covering 75% of the CCMT patents by technology)
 
@@ -118,7 +118,7 @@ save "$datapath/Complete_3digits_benchmark_Mitig.dta", replace
 
 
 *== Construction of the benchmark by technology: 
-*Selection of all the technologies with the IPCC codes coresponding to the benchmark identified
+*Selection of all the technologies with the IPC codes coresponding to the benchmark identified
 
 /// Selection of the technologies (appln_id) using the 4 first IPC identification characters  
 /// Keep only one appln_id by benchmark
@@ -153,3 +153,4 @@ save "$datapath/Complete_4digits_benchmark_Mitig.dta", replace
 *=============================================
 *=============================================
 *=============================================
+
