@@ -66,7 +66,7 @@ use "$patstpath/mitigation/all_sub_techCAT_mitigation_patents_info", clear
 gen byte HVI = (famsize_offices_EPCgrants_docdb>1)
 *Define the publication year of the invention as the earliest publication year within the family
 bys docdb : egen publn_year=min(earliest_publn_year)
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<=2025
 keep technology sub_tech docdb publn_year invt_country HVI
 duplicates drop
 gen byte x = 1
@@ -213,7 +213,7 @@ save "$datapath/Final_database/mitigation_inv_subCAT_inventor_ctry_year", replac
 
 * Transfers
 use "$patstpath/mitigation/mitigation_subCAT_patents_invt_auth_publn_year", clear	
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<=2025
 mmerge appln_auth publn_year invt_country  /// 
 using "$patstpath/mitigation/Complete_ALL_patents_invt_auth_year.dta"
 drop _m
@@ -397,7 +397,7 @@ keep Hydrogen_cat earliest_publn_year invt_country docdb famsize_offices_EPCgran
 duplicates drop
 gen byte HVI = (famsize_offices_EPCgrants_docdb>1)
 bys docdb : egen publn_year=min(earliest_publn_year)
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<=2025
 keep docdb Hydrogen_cat publn_year invt_country HVI
 duplicates drop
 sort docdb invt_country Hydrogen_cat
@@ -440,7 +440,7 @@ cpc_code =="Y02E10/547" | cpc_code =="Y02E10/548" | cpc_code =="Y02E10/549"
 duplicates drop
 gen byte HVI = (famsize_offices_EPCgrants_docdb>1)
 bys docdb : egen publn_year=min(earliest_publn_year)
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<=2025
 keep technology sub_tech cpc_code docdb publn_year invt_country HVI
 duplicates drop
 gen byte x = 1
@@ -480,7 +480,7 @@ keep if cpc_code =="Y02E10/727" | cpc_code =="Y02E10/728"
 duplicates drop
 gen byte HVI = (famsize_offices_EPCgrants_docdb>1)
 bys docdb : egen publn_year=min(earliest_publn_year)
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<=2025
 keep technology sub_tech cpc_code docdb publn_year invt_country HVI
 duplicates drop
 gen byte x = 1
@@ -523,7 +523,7 @@ keep EV_cat earliest_publn_year invt_country docdb famsize_offices_EPCgrants_doc
 duplicates drop
 gen byte HVI = (famsize_offices_EPCgrants_docdb>1)
 bys docdb : egen publn_year=min(earliest_publn_year)
-keep if publn_year>1969 & publn_year<2018
+keep if publn_year>1969 & publn_year<=2025
 keep docdb EV_cat publn_year invt_country HVI
 duplicates drop
 sort docdb invt_country EV_cat

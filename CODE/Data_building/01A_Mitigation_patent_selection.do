@@ -17,6 +17,7 @@
  * Select mitigation patents (CPC codes begin with Y02), excluding Y02A (adaptation patents)
  use "$patstpath/general/CPC_codes.dta", clear 
  keep if [regexm(cpc_code,"Y02")==1] & [regexm(cpc_code,"Y02A")!=1]
+assert regexm(cpc_code,"Y02") & !regexm(cpc_code,"Y02A")
  gen technology=substr(cpc_code,1,3)
  save "$datapath/Y02_PatstatCAT_mitigation.dta", replace
 

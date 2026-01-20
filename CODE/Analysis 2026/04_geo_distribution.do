@@ -2,7 +2,7 @@
 * MODULE 04 — GEOGRAPHIC DISTRIBUTION OF CCMT INVENTION
 *------------------------------------------------------------------
 
-do "analysis/00_globals.do"
+do "00_globals.do"
 
 *------------------------------------------------------------------
 * Load final CCMT invention panel (inventor country)

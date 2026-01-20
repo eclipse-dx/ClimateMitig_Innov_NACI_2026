@@ -2,7 +2,7 @@
 * MODULE 03 — TECHNOLOGY STRUCTURE OF CCMT
 *------------------------------------------------------------------
 
-do "analysis/00_globals.do"
+do "00_globals.do"
 
 *------------------------------------------------------------------
 * Load final invention panel

@@ -50,7 +50,7 @@ do "$dopath/Data_building/01B_Benchmark_construction"
 * Create final databases on invention and transfer of CCMT technologies
 * We identify the benchmark using the 3 first digits of the IPC codes
 * Technologies are classified using technology categories (4 first digits of their CPC codes)
-do "$dopath/Data_building/02A_patent_mitigation_patstatCAT_2018"
+do "$dopath/Data_building/02A_patent_mitigation_patstatCAT_2026"
 
 
 *BENCHMARK 4 DIGITS 
@@ -58,7 +58,7 @@ do "$dopath/Data_building/02A_patent_mitigation_patstatCAT_2018"
 * Create final databases on invention and transfer of CCMT technologies
 * We identify the benchmark using the 4 first digits of the IPC codes
 * Technologies are classified using technology categories (4 first digits of their CPC codes)
-do "$dopath/Data_building/02B_patent_mitigation_4digits_patstatCAT_2018"
+do "$dopath/Data_building/02B_patent_mitigation_4digits_patstatCAT_2026"
 
 *FOCUS SUB-CATEGORIES
 
@@ -66,6 +66,28 @@ do "$dopath/Data_building/02B_patent_mitigation_4digits_patstatCAT_2018"
 * We identify the benchmark using the 3 first digits of the IPC codes
 * Technologies are classified using technology sub-categories (6 first digits of their CPC codes)
 do "$dopath/Data_building/02C_patent_mitigation_subCATpatstat_2018"
+
+*===========
+*=========== 	SELECTION OF ALL ADAPTATION PATENTS & BENCHMARK (Y02A)
+
+* Select adaptation related patents, and identify the technology categories and sub-categories
+do "$dopath/Data_building/01A_Adaptation_patent_selection"
+
+* Select patents to create the benchmark related to adaptation
+* Identify patents included in the benchmark using the 3 or 4 first digits of their IPC codes
+do "$dopath/Data_building/01B_Adaptation_Benchmark_construction"
+
+*===========
+*=========== 	CONSTRUCTION OF THE ADAPTATION DATABASES FROM PATSTAT DATA
+
+* MAIN DATASETS (3-digit IPC benchmark)
+do "$dopath/Data_building/02A_patent_adaptation_patstatCAT_2026"
+
+* BENCHMARK 4 DIGITS
+do "$dopath/Data_building/02B_patent_adaptation_4digits_patstatCAT_2026"
+
+* FOCUS SUB-CATEGORIES (6-digit CPC)
+do "$dopath/Data_building/02C_patent_adaptation_subCATpatstat_2026"
 
 *===========
 *=========== 	DATA MANAGEMENT OTHER DATABASES
