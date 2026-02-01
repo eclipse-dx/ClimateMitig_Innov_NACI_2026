@@ -31,6 +31,34 @@ Open and run in order:
 3. [05_DeepDive_EV_Hydrogen.ipynb](file:///Users/iordn/Documents/GitHub/ClimateMitig_Innov_NACI_2026/CODE_TIP/Analysis/05_DeepDive_EV_Hydrogen.ipynb)
 4. [06_Adaptation_Trends.ipynb](file:///Users/iordn/Documents/GitHub/ClimateMitig_Innov_NACI_2026/CODE_TIP/Analysis/06_Adaptation_Trends.ipynb)
 
+5. Open any of the notebooks in the `Analysis/` folder.
+6. **Select Kernel**: Ensure the "Python 3" kernel is selected.
+7. **Run Cells**: Execute the cells sequentially. The notebooks use the `asearch` library to pull data directly.
+
+#### Using SQLAlchemy in TIP
+
+The `asearch` connection is typically a DBAPI-compliant object. For the best experience with modern Pandas and SQLAlchemy:
+
+```python
+import asearch as asr
+import pandas as pd
+from sqlalchemy import create_engine
+
+# The TIP environment handles the connection pooling
+conn = asr.get_connection()
+
+# You can use it directly with pandas:
+df = pd.read_sql("SELECT * FROM project_mitigation_enriched", con=conn)
+
+# If your specific analysis requires a SQLAlchemy Engine/Session:
+# TIP typically pre-configures a SQLAlchemy-compatible dialect.
+# You can check the available engine using:
+# engine = asr.get_engine()  # If available in your TIP version
+```
+
+> [!TIP]
+> **Performance**: For large datasets, `read_sql` with the direct `asr.get_connection()` is highly optimized for the PATSTAT backend on TIP.
+
 ---
 
 ## 3. Handling External Data (FDI & R&D)
