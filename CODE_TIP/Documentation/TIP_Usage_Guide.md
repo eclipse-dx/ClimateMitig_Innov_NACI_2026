@@ -15,12 +15,21 @@ The migrated codebase follows a two-stage process:
 
 ### Phase A: Data Selection (SQL)
 
-Run these in the TIP SQL Editor:
+You can run these manually in the TIP SQL Editor or use the automated script below:
 
 - **Core Selection**: Run `01A_Mitigation_selection.sql` and `01A_Adaptation_selection.sql`.
 - **Enrichment**: Run `02A_Mitigation_enrichment.sql` and `02A_Adaptation_enrichment.sql`.
 - **Benchmarks**: Run `01B_Benchmark_construction.sql`.
 - **Aggregations**: Run `02B_Technical_Aggregations.sql`.
+
+#### Automated Execution (Recommended)
+
+You can run the entire data selection pipeline using the provided master script:
+
+1. Open a terminal or a notebook cell in the `CODE_TIP/Data_selection/` directory.
+2. Run: `python run_data_selection.py`
+
+This will execute all selection and enrichment steps in the correct order and report progress.
 
 ### Phase B: Analysis (Jupyter Notebooks)
 
